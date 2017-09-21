@@ -1,0 +1,100 @@
+package secondScreen;
+
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.ResultSetMetaData;
+import com.mysql.jdbc.Statement;
+
+public class DBBus {
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
+	String driverName = "com.mysql.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/dbBus";
+	String user = "dbuser";
+	String password = "dbpass";
+	StringBuffer query = new StringBuffer();
+	
+	public DBBus(){
+		try {
+			Class.forName(driverName); //·Îµå
+			conn = (Connection) DriverManager.getConnection(url, user, password);
+			System.out.println("DB Connection OK");
+			
+		} catch(ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("DB Driver Error!");
+		} catch(SQLException se) {
+			se.printStackTrace();
+			System.out.println("DB Connection Error!");
+		}
+		
+		try {
+			stmt = (Statement) conn.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM dbbus");
+
+			if (stmt.execute("SELECT * FROM dbbus")) {
+				rs = stmt.getResultSet();
+			}
+		} catch(Exception ex) {
+			// handle the error
+		}
+
+		try{
+			while (rs.next()) {
+				int bus_num = rs.getInt("bus_um");
+				String name = rs.getString("name"); 
+				int age = rs.getInt("age");
+				System.out.println(id + " " + name + " " +age);
+			} 
+		}catch(Exception ex) {
+			// handle the error
+		}
+		
+		
+	} //DBBus
+	
+	/*public void SelectAll() {
+		try {
+			String queryString = "select * from dbbus";
+			connection = (Connection) DriverManager.getConnection(url, user, password);
+			statement = (Statement) connection.createStatement();
+			resultSet = statement.executeQuery(queryString);
+			
+			ResultSetMetaData resultSetMetaData = (ResultSetMetaData) resultSet.getMetaData();
+			
+			System.out.println(resultSetMetaData.getColumnName(1) + "\t" + resultSetMetaData.getColumnName(2) + "\t" + resultSetMetaData.getColumnName(3) + "\t" + resultSetMetaData.getColumnName(4));
+
+			while (resultSet.next())
+			{
+				System.out.println(resultSet.getInt("p_no") + "\t" + resultSet.getString("p_name") + "\t" + resultSet.getInt("p_price") + "\t" + resultSet.getString("p_detail"));
+			}
+		}
+		catch (SQLException e)
+		{
+			System.out.println("[Äõ¸® ¿À·ù]\n" + e.getStackTrace());
+		}
+		finally
+		{
+			// ¨ê ´Ý±â
+			closeDatabase();
+		}
+	}*/
+	
+	
+	
+	
+		
+	public static void main(String[] args) {
+		DBBus dbbus = new DBBus();
+		
+		//dbbus.SelectAll();
+		
+		
+		
+	}
+}

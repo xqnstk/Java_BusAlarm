@@ -1,0 +1,67 @@
+package secondScreen;
+
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.ResultSetMetaData;
+import java.sql.Statement;
+
+public class DBBus {
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	
+	String driverName = "com.mysql.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/dbBus";
+	String user = "dbuser";
+	String password = "dbpass";
+	StringBuffer query = new StringBuffer();
+	
+	public DBBus(){
+		try {
+			Class.forName(driverName); //로드
+			conn = DriverManager.getConnection(url, user, password);
+			System.out.println("DB Connection OK");
+		} catch(ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("DB Driver Error!");
+		} catch(SQLException se) {
+			se.printStackTrace();
+			System.out.println("DB Connection Error!");
+		}
+		
+		try {
+			stmt = (Statement) conn.createStatement();
+			rs = stmt.executeQuery("SELECT * FROM dbbus.bus_info");
+
+			if (stmt.execute("SELECT * FROM dbbus.bus_info")) {
+				rs = stmt.getResultSet(); //결과값 얻어오기
+			}
+		} catch(Exception ex) {
+			// handle the error
+			System.out.println("result error");
+		}
+
+		try{
+			while (rs.next()) {
+				int bus_num = rs.getInt("bus_num");
+				boolean low_floor_bus = rs.getBoolean("low_floor_bus"); 
+				int seat_num = rs.getInt("seat_num");
+				System.out.println(bus_num + " " + low_floor_bus + " " +seat_num);
+			} 
+		}catch(Exception ex) {
+			// handle the error
+			System.out.println("print error");
+		}
+		
+	} //DBBus
+
+	
+	
+		
+	public static void main(String[] args) {
+		DBBus dbbus = new DBBus();
+		
+	}
+}

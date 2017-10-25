@@ -1,8 +1,6 @@
 package Main;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,12 +10,10 @@ import BusAlarmScreen.BusAlarmPanel;
 import BusAlarmScreen.BusAlarmPanel2;
 import BusAlarmScreen.BusSeat;
 
-public class BusAlarm extends JFrame {
+public class BusAlarm2 extends JFrame {
 
 	public static final int SCREEN_W = 1280;
 	public static final int SCREEN_H = 720;
-	public static int BUS_SPEED=2;
-	public static final int SLEEP_TIME=5;
 
 	private JPanel contentPane;
 
@@ -95,14 +91,7 @@ public class BusAlarm extends JFrame {
 		});
 	}
 
-	public BusAlarm() {
+	public BusAlarm2() {
 		contentPane = new JPanel();
-		
-		//작업 표시줄의 닫기 버튼 누르면 종료됨.
-				this.addWindowListener(new WindowAdapter(){
-		            public void windowClosing(WindowEvent e) { 
-		                    System.exit(0);
-		            }
-		    });
 	}
 }

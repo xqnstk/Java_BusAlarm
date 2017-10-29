@@ -1,0 +1,47 @@
+package BusAlarmScreen;
+
+import java.sql.DriverManager; //JDBC드라이버 클래스
+import java.sql.ResultSet; //DB의 결과를 나타내는 클래스
+import java.sql.SQLException; //DB에러 클래스
+import java.sql.Connection; //DB와 연결하기 위한 클래스
+import java.sql.Statement; //쿼리물 실행 후 결과 리턴 클래스
+import java.util.Random; //랜덤
+
+public class DBBus {
+	Connection conn = null; // DB와 연결하기 위한 conn객체 생성
+	Statement stmt = null; // 연결된 포트로 쿼리문을 보내도록 도와주는 stmt객체 생성
+	ResultSet rs = null; // 쿼리문 실행 후 결과값 리턴해주는 rs객체 생성
+
+	String driverName = "com.mysql.jdbc.Driver"; // DB드라이버 검색
+	String url = "jdbc:mysql://localhost:3306/dbbus";
+	String user = "root";
+	String password = "mirim0316";
+
+	static int bus_num;
+	static int low_floor_bus;
+	static int seat_num;
+	//int bnum[] = new int[45];
+	//int bfloor[] = new int[45];
+	//int bseat[] = new int[45];
+	int cnt = 0;
+
+	public DBBus() {
+		try {
+			Class.forName(driverName); // 로드
+			conn = DriverManager.getConnection(url, user, password); // 연결
+			System.out.println("DB Connection OK");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("DB Driver Error!");
+		} catch (SQLException se) {
+			se.printStackTrace();
+			System.out.println("DB Connection Error!");
+		}
+	} // DBBus
+	
+	public void insertDB() {
+		
+	}
+
+	
+}

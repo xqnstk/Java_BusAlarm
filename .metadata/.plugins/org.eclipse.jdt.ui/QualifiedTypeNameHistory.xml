@@ -6,4 +6,9 @@
 <fullyQualifiedTypeName name="com.mysql.jdbc.Statement"/>
 <fullyQualifiedTypeName name="java.sql.ResultSet"/>
 <fullyQualifiedTypeName name="com.mysql.jdbc.ResultSetMetaData"/>
+<fullyQualifiedTypeName name="javax.swing.JPanel"/>
+<fullyQualifiedTypeName name="javax.swing.JFrame"/>
+<fullyQualifiedTypeName name="javax.swing.JButton"/>
+<fullyQualifiedTypeName name="BusAlarmScreen.BusSeat"/>
+<fullyQualifiedTypeName name="BusAlarmScreen.BusAlarmPanel2"/>
 </qualifiedTypeNameHistroy>

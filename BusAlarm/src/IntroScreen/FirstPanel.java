@@ -12,7 +12,6 @@ public class FirstPanel extends JPanel {
 	ImageIcon icStartScreen = new ImageIcon(this.getClass().getResource("/FirstScreen.jpg"));
 	JButton bStartScreenImage = new JButton(icStartScreen);
 	
-	
 	public FirstPanel(BusAlarm busalarm) {
 		this.busalarm=busalarm;
 		setLayout(null);
@@ -20,10 +19,9 @@ public class FirstPanel extends JPanel {
 		bStartScreenImage.setLocation(0,0);
 		BusAlarm.setButton(bStartScreenImage);
 		add(bStartScreenImage);
-		
 		bStartScreenImage.addMouseListener(new MouseAdapter() {
 			public void mousePressed(MouseEvent e) {
-				busalarm.change("intropanel"); //¿Ãµø
+				busalarm.change("intropanel");
 			}
 		});
 	}

@@ -1,12 +1,21 @@
 package BusAlarmScreen;
 
-public class BusStop {
+import java.awt.Point;
 
-	int x,y;
+import javax.swing.JButton;
+
+public class BusStop extends JButton{
+
+	Point pos; //버스 좌표
+	BusStop busStop;
+
+	BusStop(int x, int y) {
+		pos = new Point(x, y); //버스의 좌표를 체크
+	}
 	
-	public BusStop(int x, int y)
+	void setPos(int x, int y)
 	{
-		this.x=x;
-		this.y=y;
+		pos.x=x;
+		pos.y=y;
 	}
 }

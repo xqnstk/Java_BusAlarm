@@ -16,7 +16,7 @@ public class Bus extends JButton{
 	Point pos; //버스 좌표
 	int busPassenger=0;
 	int bnum, bfloor, bseat;
-	
+	int xy=0;
 	
 	Bus(int x, int y) {
 		pos = new Point(x, y); //버스의 좌표를 체크
@@ -33,6 +33,10 @@ public class Bus extends JButton{
 		}
 		pos.x+=bus_speed;	
 		
+	}
+	
+	public void where() {
+		xy =(int)((Math.random()*24)); 
 	}
 	
 	public void congestion()

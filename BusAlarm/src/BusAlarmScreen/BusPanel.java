@@ -70,9 +70,10 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 	BusAPI busapi = new BusAPI();
 	int gap, linecnt1=0, bus_speed=1, many; //버스 개수, 홀/짝수줄 인식, 버스 속도, 한 줄 버스 개수
 	int busgap[] = new int[3]; //버스 간 간격
-	int x, y, busStop_x, busStop_y; //좌표
-	//int fast=40, non=100, slow=150; //속도 변수
-	
+	int x, y, busStop_x, busStop_y; // 좌표
+	int list1_x[] = { 34, 211, 34, 211, 34, 211, 34, 211, 34, 211, 34, 80, 172, 214, 34, 211, 34, 80, 172, 214, 34, 211, 34, 80, 126, 172, 211 };
+	int list1_y[] = { 103, 103, 148, 148, 194, 194, 240, 240, 286, 286, 353, 353, 353, 353, 397, 397, 397, 397, 440, 440, 484, 484, 484, 484, 484 };
+
 	Thread th;
 	ArrayList Bus_List = new ArrayList();
 	ArrayList BusStop_List = new ArrayList();
@@ -105,51 +106,27 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 				final Frame frbusStop = new Frame("Bus");
 				String low_floor;
 				JPanel p =new JPanel();
-				p.setBorder(new EmptyBorder(5, 5, 5, 5));
-
-				//p.setLayout(new FlowLayout());
 				p.setLayout(null);
+				p.setBackground(Color.WHITE);
 
 				JLabel lbseated1 = new JLabel(icseated);
-				lbseated1.setBounds(19, 92, 47, 40);
+				lbseated1.setBounds(list1_x[bus.xy], list1_y[bus.xy], 47, 40);
 				p.add(lbseated1);
-				//x는 46-177, y는 46
-
-				JLabel lbseated2 = new JLabel(icseated);
-				lbseated2.setBounds(19, 138, 47, 40);
-				p.add(lbseated2);
-				
-				JLabel lbseated3 = new JLabel(icseated);
-				lbseated3.setBounds(196, 138, 47, 40);
-				p.add(lbseated3);
-				
-				JLabel lbseated5 = new JLabel(icseated);
-				lbseated5.setBounds(19, 184, 47, 40);
-				p.add(lbseated5);
-				
-				JLabel lbseated6 = new JLabel(icseated);
-				lbseated6.setBounds(19, 343, 47, 40);
-				p.add(lbseated6);
-				
-				JLabel lbseated4 = new JLabel(icseated);
-				lbseated4.setBounds(65, 343, 47, 40);
-				p.add(lbseated4);
-				
-				JLabel lbseated7 = new JLabel(icseated);
-				lbseated7.setBounds(111, 343, 47, 40);
-				p.add(lbseated7);
-				
-			
-				
-			
 				
 				JLabel lbbusSeat = new JLabel(icbusSeat);
-				lbbusSeat.setBounds(0,0,263,523);
+				lbbusSeat.setBounds(15,10,263,523);
 				p.add(lbbusSeat);
-
-
+				p.setLayout(getLayout());
+				
 				JLabel l=new JLabel("현재 승객수 : "+Integer.toString(bus.busPassenger));
 				JLabel info=new JLabel("버스 번호 : "+bus.bnum + ", 저상 여부 : " +bus.bfloor + ", 좌석 총 개수 : " + bus.bseat+"개");
+
+				l.setBounds(19, 530, 10, 30);
+				info.setBounds(19, 540, 260, 530);
+				p.add(l);
+				p.add(info);
+
+
 
 				if(DBBus.low_floor_bus == 1) {
 					low_floor = "저상버스";
@@ -158,10 +135,6 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 					low_floor="지상버스";
 				}
 				
-				l.setBounds(0, 0, 260, 530);
-				p.setBackground(Color.WHITE);
-				p.add(l);
-				p.add(info);
 				frbusStop.add(p);
 				frbusStop.setVisible(true);
 				frbusStop.addWindowListener(new WindowAdapter() {
@@ -368,6 +341,8 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 			BusAlarm.setButton(bus);
 			bus.addActionListener(busListener);
 			add(bus);
+			bus.where();
+
 		}
 	}
 

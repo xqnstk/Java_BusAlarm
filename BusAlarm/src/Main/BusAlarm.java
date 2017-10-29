@@ -87,7 +87,6 @@ public class BusAlarm extends JFrame {
 
 	public BusAlarm() {
 		contentPane = new JPanel();
-		BusAlarmScreen.DBBus dbbus = new BusAlarmScreen.DBBus();
 
 		//작업 표시줄의 닫기 버튼 누르면 종료됨.
 		this.addWindowListener(new WindowAdapter(){

@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.JButton;
 
@@ -17,31 +19,79 @@ public class Bus extends JButton{
 	int busPassenger=0;
 	int bnum, bfloor, bseat;
 	int xy=0;
+	int num;
+	String degreeOfCongestion =null;//버스혼잡도
+	String name;
+	int busCnt=0;
 	
 	Bus(int x, int y) {
 		pos = new Point(x, y); //버스의 좌표를 체크
+		name=Integer.toString(busCnt);
+		this.busCnt=busCnt;
 	}
 	
-	int bus_speed=1;
+	int busDir=1;
+	int line=1;
+	int busSpeed=1;
 
 	public void move() { // 버스 이동을 위한 메소드
-				
 		if(pos.x>1100 || pos.x<10)
 		{
-			bus_speed=-bus_speed;
-			pos.y+=140;			
+			busDir=-busDir;
+			pos.y+=118;	
+			//line++;
 		}
-		pos.x+=bus_speed;	
+		//pos.x+=busDir*busSpeed;
+		pos.x+=busDir;
 		
 	}
 	
-	public void where() {
+	public void where() { //좌석 색칠 좌표값 할당
 		xy =(int)((Math.random()*24)); 
 	}
 	
-	public void congestion()
+	public void countCongestion(int busPassenger)
+	{
+		if(busPassenger>40){
+			degreeOfCongestion="혼잡";
+		}
+		else if(busPassenger>25){
+			degreeOfCongestion="보통";
+		}else {
+			degreeOfCongestion="여유";
+		}
+	}
+	
+	public void arriveBus(int busStop_ride_passenger, int busStop_alight_passenger)
 	{
 		
+			busPassenger+=busStop_ride_passenger;
+			busPassenger-=busStop_alight_passenger;
+		
+		
+		
+		busDir=0;
+		Timer m_timer = new Timer();
+		TimerTask m_task=new TimerTask(){
+			public void run(){
+				if(line%2==0)
+				{
+					busDir=-1;
+				}
+				else
+				{
+					busDir=1;
+				}
+				
+				
+			}
+		};
+		m_timer.schedule(m_task, 1000);
+		
+	}
+	public void controllSpeed(int busType)
+	{
+		busSpeed=busType;
 	}
 	
 	

@@ -16,7 +16,7 @@ import javax.swing.JButton;
 public class Bus extends JButton{
 
 	Point pos; //버스 좌표
-	int busPassenger=(int)((Math.random()*15)+5);
+	int busPassenger=0;
 	int bnum, bfloor, bseat;
 	int xy=0;
 	int num;
@@ -30,19 +30,19 @@ public class Bus extends JButton{
 		this.busCnt=busCnt;
 	}
 	
-	int busDir=1;
+	int busDirSp=1, busDir=1;
 	int line=1;
 	int busSpeed=1;
 
 	public void move() { // 버스 이동을 위한 메소드
 		if(pos.x>1100 || pos.x<10)
 		{
-			busDir=-busDir;
+			busDirSp=-busDirSp;
 			pos.y+=118;	
 			//line++;
 		}
 		//pos.x+=busDir*busSpeed;
-		pos.x+=busDir;
+		pos.x+=busDirSp;
 		
 	}
 	

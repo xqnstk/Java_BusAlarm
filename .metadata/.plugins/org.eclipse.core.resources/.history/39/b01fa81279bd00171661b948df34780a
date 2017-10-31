@@ -326,8 +326,8 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 		for(i=0; i<many; i++) { //한 줄에 버스 2, 3개정도
 			if(many == 3) {
 				busgap[0]=(int)((Math.random()*300)+100); 
-				busgap[1]=(int)((Math.random()*200)+400); 
-				busgap[2]=(int)((Math.random()*300)+700); 
+				busgap[1]=(int)((Math.random()*200)+500); 
+				busgap[2]=(int)((Math.random()*300)+800); 
 			}
 			else if(many == 2) {
 				busgap[0]=(int)((Math.random()*300)+100); 
@@ -423,7 +423,7 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 		// 메뉴바
 		lbbusInfo = new JLabel();
 		lbbusInfo.setFont(new Font("나눔스퀘어 Bold", Font.PLAIN, 18));
-		lbbusInfo.setText(busapi.GetBusInfo()); 
+		lbbusInfo.setText("버스정보");// busapi.GetBusInfo()
 		lbbusInfo.setSize(500, 100);
 		lbbusInfo.setLocation(0, 0);
 		add(lbbusInfo);

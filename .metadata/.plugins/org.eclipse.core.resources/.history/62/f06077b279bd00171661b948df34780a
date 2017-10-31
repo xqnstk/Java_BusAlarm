@@ -16,7 +16,7 @@ import javax.swing.JButton;
 public class Bus extends JButton{
 
 	Point pos; //¹ö½º ÁÂÇ¥
-	int busPassenger=(int)((Math.random()*15)+5);
+	int busPassenger=0;
 	int bnum, bfloor, bseat;
 	int xy=0;
 	int num;
@@ -65,17 +65,25 @@ public class Bus extends JButton{
 	public void arriveBus(int busStop_ride_passenger, int busStop_alight_passenger)
 	{
 		
-		busPassenger+=busStop_ride_passenger;
-		busPassenger-=busStop_alight_passenger;
-		if(busPassenger<0)
-		{
-			busPassenger=0;
-		}
-		busSpeed=0;
+			busPassenger+=busStop_ride_passenger;
+			busPassenger-=busStop_alight_passenger;
+		
+		
+		
+		busDir=0;
 		Timer m_timer = new Timer();
 		TimerTask m_task=new TimerTask(){
 			public void run(){
-				busSpeed=1;
+				/*if(line%2==0)
+				{
+					busDir=-1;
+				}
+				else
+				{
+					busDir=1;
+				}*/
+				
+				
 			}
 		};
 		m_timer.schedule(m_task, 1000);

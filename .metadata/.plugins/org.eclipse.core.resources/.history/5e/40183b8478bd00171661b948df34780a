@@ -319,15 +319,13 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 	}
 	public void changexy() { //x, yÁÂÇ¥ ÁÖ±â
 		x=10;
-		y+=118;
-
 		many = (int)((Math.random()*2)+2);
 		//System.out.println(many);
 		for(i=0; i<many; i++) { //ÇÑ ÁÙ¿¡ ¹ö½º 2, 3°³Á¤µµ
 			if(many == 3) {
 				busgap[0]=(int)((Math.random()*300)+100); 
-				busgap[1]=(int)((Math.random()*200)+400); 
-				busgap[2]=(int)((Math.random()*300)+700); 
+				busgap[1]=(int)((Math.random()*200)+500); 
+				busgap[2]=(int)((Math.random()*300)+800); 
 			}
 			else if(many == 2) {
 				busgap[0]=(int)((Math.random()*300)+100); 
@@ -341,6 +339,8 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 			}
 		}
 		linecnt1++;
+		
+		y+=118;
 	}
 	
 	public void person() {
@@ -415,7 +415,7 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 			BusAlarm.setButton(bus);
 			bus.addActionListener(busListener);
 			add(bus);
-			bus.where(); //ÁÂ¼® ·£´ı »öÄ¥
+			bus.where(); //ÁÂ¼® ·£Á¡ »öÄ¥
 		}
 	}
 
@@ -423,7 +423,7 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 		// ¸Ş´º¹Ù
 		lbbusInfo = new JLabel();
 		lbbusInfo.setFont(new Font("³ª´®½ºÄù¾î Bold", Font.PLAIN, 18));
-		lbbusInfo.setText(busapi.GetBusInfo()); 
+		lbbusInfo.setText("¹ö½ºÁ¤º¸");// busapi.GetBusInfo()
 		lbbusInfo.setSize(500, 100);
 		lbbusInfo.setLocation(0, 0);
 		add(lbbusInfo);

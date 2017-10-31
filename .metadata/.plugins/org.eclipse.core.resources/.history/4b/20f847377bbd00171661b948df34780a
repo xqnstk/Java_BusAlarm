@@ -337,7 +337,7 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 			
 			BusProcess();
 			if(linecnt1%2==0) { //뒤로 가기
-				bus.busDir=-bus_speed;
+				bus.busDirSp=-bus_speed;
 			}
 		}
 		linecnt1++;
@@ -423,7 +423,7 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 		// 메뉴바
 		lbbusInfo = new JLabel();
 		lbbusInfo.setFont(new Font("나눔스퀘어 Bold", Font.PLAIN, 18));
-		lbbusInfo.setText(busapi.GetBusInfo()); 
+		lbbusInfo.setText("버스정보");// busapi.GetBusInfo()
 		lbbusInfo.setSize(500, 100);
 		lbbusInfo.setLocation(0, 0);
 		add(lbbusInfo);

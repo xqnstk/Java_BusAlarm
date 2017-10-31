@@ -338,7 +338,7 @@ public class BusPanel extends JPanel implements Runnable, ActionListener {
 			BusProcess();
 			if(linecnt1%2==0) { //뒤로 가기
 				bus.busDir=-bus_speed;
-			}
+			}			}
 		}
 		linecnt1++;
 	}

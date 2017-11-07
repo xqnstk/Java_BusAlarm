@@ -1,4 +1,0 @@
-static int busCnt;
-	static int busStopCnt;
-	static boolean flag=true;
-	

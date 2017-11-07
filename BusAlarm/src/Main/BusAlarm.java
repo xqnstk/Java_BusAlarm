@@ -13,7 +13,6 @@ import javax.swing.JPanel;
 import BusAlarmScreen.BusPanel;
 import IntroScreen.FirstPanel;
 import IntroScreen.IntroPanel;
-import BusAlarmScreen.DBBus;
 
 public class BusAlarm extends JFrame {
 
@@ -76,6 +75,8 @@ public class BusAlarm extends JFrame {
 					frame.setLocationRelativeTo(null);
 					frame.getContentPane().add(frame.firstpanel);
 
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -85,7 +86,7 @@ public class BusAlarm extends JFrame {
 
 	public BusAlarm() {
 		contentPane = new JPanel();
-
+		
 		//작업 표시줄의 닫기 버튼 누르면 종료됨.
 		this.addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent e) { 
